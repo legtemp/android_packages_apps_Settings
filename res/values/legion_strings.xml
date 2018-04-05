@@ -40,4 +40,6 @@
     <string name="legion_version">LegionOS version</string>
     <string name="about_device_name">Device</string>
 
+    <!-- Title for connected TWS device group [CHAR LIMIT=none]-->
+    <string name="connected_tws_device_saved_title">Saved Earbuds</string>
 </resources>
