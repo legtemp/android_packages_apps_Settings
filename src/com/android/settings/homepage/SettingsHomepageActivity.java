@@ -76,7 +76,7 @@ public class SettingsHomepageActivity extends FragmentActivity implements
 
 
         getLifecycle().addObserver(new HideNonSystemOverlayMixin(this));
-	collapsing_toolbar.setTitle(Settings");
+	collapsing_toolbar.setTitle("Settings");
         mCategoryMixin = new CategoryMixin(this);
         getLifecycle().addObserver(mCategoryMixin);
 
