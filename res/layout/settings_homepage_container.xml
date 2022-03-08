@@ -27,7 +27,6 @@
         android:id="@+id/main_content_scrollable_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
         app:layout_behavior="com.android.settings.widget.HomepageAppBarScrollingViewBehavior">
 
         <LinearLayout
@@ -70,7 +69,7 @@
                 android:id="@+id/homepage_title"
                 android:text="@string/settings_label"
 		android:layout_gravity="center"
-                android:textSize="50sp"
+                android:textSize="40sp"
                 style="@style/HomepageTitleText"/>
 
             <FrameLayout

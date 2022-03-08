@@ -112,7 +112,7 @@ public class TopLevelSettings extends DashboardFragment implements
             if(i == 0) {
                 preference.setLayoutResource(R.layout.card_top);
             }
-            else if (i>=2 && i<=18){
+            else if (i>=1 && i<=18){
                 preference.setLayoutResource(R.layout.card_mid);
             }
             else if ( i== 19){

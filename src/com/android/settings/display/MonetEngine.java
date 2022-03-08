@@ -58,7 +58,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.Utils;
 
-import com.arrow.support.colorpicker.ColorPickerPreference;
+import org.legion.support.colorpicker.ColorPickerPreference;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -93,7 +93,7 @@ public class MonetEngine extends SettingsPreferenceFragment implements OnPrefere
 
     @Override
     public int getMetricsCategory() {
-        return MetricsEvent.ARROW;
+        return MetricsEvent.LEGION_SETTINGS;
     }
 
     @Override

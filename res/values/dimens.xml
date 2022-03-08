@@ -127,15 +127,13 @@
 
     <!-- Search bar -->
     <dimen name="search_bar_margin">16dp</dimen>
-    <dimen name="search_bar_height">52dp</dimen>
-    <dimen name="search_bar_text_size">20sp</dimen>
+    <dimen name="search_bar_height">48dp</dimen>
+    <dimen name="search_bar_text_size">18sp</dimen>
     <dimen name="search_bar_corner_radius">28dp</dimen>
     <dimen name="search_bar_content_inset">56dp</dimen>
 
     <!-- Avatar -->
-    <dimen name="avatar_length">48dp</dimen>
-    <dimen name="avatar_margin_top">56dp</dimen>
-    <dimen name="avatar_margin_end">24dp</dimen>
+    <dimen name="avatar_length">@dimen/search_bar_height</dimen>
 
     <!-- Homepage title -->
     <dimen name="homepage_title_margin_bottom">8dp</dimen>
@@ -447,6 +445,6 @@
     <dimen name="card_top_margin">13dp</dimen>
     <dimen name="card_end_margin">13dp</dimen>
     <dimen name="card_height">75dp</dimen>
-    <dimen name="card_top_margin">15dp</dimen>
-    <dimen name="card_end_margin">15dp</dimen>
+    <dimen name="card_start_m">15dp</dimen>
+    <dimen name="card_end_m">15dp</dimen>
 </resources>
