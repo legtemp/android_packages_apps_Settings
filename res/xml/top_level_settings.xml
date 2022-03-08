@@ -41,7 +41,7 @@
         settings:controller="com.android.settings.connecteddevice.TopLevelConnectedDevicesPreferenceController"/>
 
    <Preference
-        android:layout="@layout/card_end"
+        android:layout="@layout/card_mid"
         android:fragment="com.android.settings.location.LocationSettings"
         android:icon="@drawable/ic_settings_location"
         android:key="top_level_location"
@@ -51,7 +51,7 @@
         settings:controller="com.android.settings.location.TopLevelLocationPreferenceController"/>
 
     <Preference
-        android:layout="@layout/card_top"
+        android:layout="@layout/card_mid"
         android:fragment="com.android.settings.DisplaySettings"
         android:icon="@drawable/ic_settings_display_white"
         android:key="top_level_display"
@@ -80,7 +80,7 @@
         settings:controller="com.android.settings.fuelgauge.TopLevelBatteryPreferenceController"/>
 
     <Preference
-        android:layout="@layout/card_end"
+        android:layout="@layout/card_mid"
         android:fragment="com.android.settings.notification.SoundSettings"
         android:icon="@drawable/ic_volume_up_24dp"
         android:key="top_level_sound"
@@ -89,7 +89,7 @@
         android:summary="@string/sound_dashboard_summary"/>
 
     <Preference
-        android:layout="@layout/card_top"
+        android:layout="@layout/card_mid"
         android:fragment="com.android.settings.applications.AppDashboardFragment"
         android:icon="@drawable/ic_apps"
         android:key="top_level_apps"
@@ -107,7 +107,7 @@
         android:summary="@string/notification_dashboard_summary"/>
 
     <Preference
-        android:layout="@layout/card_end"
+        android:layout="@layout/card_mid"
         android:fragment="com.android.settings.deviceinfo.StorageDashboardFragment"
         android:icon="@drawable/ic_storage_white"
         android:key="top_level_storage"
@@ -118,7 +118,7 @@
 
 
     <Preference
-        android:layout="@layout/card_top"
+        android:layout="@layout/card_mid"
         android:fragment="com.android.settings.privacy.PrivacyDashboardFragment"
         android:icon="@drawable/ic_settings_privacy"
         android:key="top_level_privacy"
@@ -157,7 +157,7 @@
         android:fragment="com.android.settings.emergency.EmergencyDashboardFragment"/>
 
     <Preference
-        android:layout="@layout/card_end"
+        android:layout="@layout/card_mid"
         android:fragment="com.android.settings.accounts.AccountDashboardFragment"
         android:icon="@drawable/ic_settings_accounts"
         android:key="top_level_accounts"
@@ -167,7 +167,7 @@
         settings:controller="com.android.settings.accounts.TopLevelAccountEntryPreferenceController"/>
 
     <Preference
-        android:layout="@layout/card_top"
+        android:layout="@layout/card_mid"
         android:fragment="com.android.settings.system.SystemDashboardFragment"
         android:icon="@drawable/ic_settings_system_dashboard_white"
         android:key="top_level_system"

@@ -19,19 +19,20 @@ package com.android.settings.homepage;
 import android.animation.LayoutTransition;
 import android.app.ActivityManager;
 import android.app.settings.SettingsEnums;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.util.FeatureFlagUtils;
 import android.util.Log;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toolbar;
 
 import androidx.fragment.app.Fragment;
@@ -40,6 +41,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.android.internal.util.UserIcons;
+import com.android.settingslib.drawable.CircleFramedDrawable;
 
 import com.android.settings.R;
 import com.android.settings.accounts.AvatarViewMixin;
@@ -48,8 +50,6 @@ import com.android.settings.core.FeatureFlags;
 import com.android.settings.homepage.contextualcards.ContextualCardsFragment;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settingslib.core.lifecycle.HideNonSystemOverlayMixin;
-
-import com.android.settingslib.drawable.CircleFramedDrawable;
 
 /** Settings homepage activity */
 public class SettingsHomepageActivity extends FragmentActivity implements
@@ -62,6 +62,9 @@ public class SettingsHomepageActivity extends FragmentActivity implements
     private View mHomepageView;
     private View mSuggestionView;
     private CategoryMixin mCategoryMixin;
+    UserManager mUserManager;
+    Context context;
+    ImageView avatarView;
 
     @Override
     public CategoryMixin getCategoryMixin() {
@@ -82,9 +85,6 @@ public class SettingsHomepageActivity extends FragmentActivity implements
         mHomepageView = null;
     }
 
-    Context context;
-    ImageView avatarView;
-    UserManager mUserManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,19 +94,25 @@ public class SettingsHomepageActivity extends FragmentActivity implements
         final View appBar = findViewById(R.id.app_bar_container);
         appBar.setMinimumHeight(getSearchBoxHeight());
         initHomepageContainer();
-
-        Context context = getApplicationContext();
-
-        mUserManager = context.getSystemService(UserManager.class);
-
+        final View root = findViewById(R.id.linearLayout);
+        final View ava_root = findViewById(R.id.settings_homepage_container);
+        Log.e("SET","hi"+root);
         final Toolbar toolbar = findViewById(R.id.search_action_bar);
         FeatureFactory.getFactory(this).getSearchFeatureProvider()
                 .initSearchToolbar(this /* activity */, toolbar, SettingsEnums.SETTINGS_HOMEPAGE);
 
-        avatarView = findViewById(R.id.account_avatar);
+        getLifecycle().addObserver(new HideNonSystemOverlayMixin(this));
+        mCategoryMixin = new CategoryMixin(this);
+        getLifecycle().addObserver(mCategoryMixin);
+        final TextView uName =root.findViewById(R.id.user_name);
+        Context context = getApplicationContext();
+        mUserManager = context.getSystemService(UserManager.class);
+        Log.e("SET","hi"+uName+mUserManager.getUserName());
+        uName.setText(mUserManager.getUserName());
+        
+        avatarView = ava_root.findViewById(R.id.account_avatar);
         //final AvatarViewMixin avatarViewMixin = new AvatarViewMixin(this, avatarView);
         avatarView.setImageDrawable(getCircularUserIcon(context));
-        avatarView.setVisibility(View.VISIBLE);
         avatarView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,13 +121,17 @@ public class SettingsHomepageActivity extends FragmentActivity implements
                 startActivity(intent);
             }
         });
+        //getLifecycle().addObserver(avatarViewMixin);
 
-        getLifecycle().addObserver(new HideNonSystemOverlayMixin(this));
-        mCategoryMixin = new CategoryMixin(this);
-        getLifecycle().addObserver(mCategoryMixin);
 
         if (!getSystemService(ActivityManager.class).isLowRamDevice()) {
             // Only allow features on high ram devices.
+            // final ImageView avatarView = findViewById(R.id.account_avatar);
+            // if (AvatarViewMixin.isAvatarSupported(this)) {
+            //     avatarView.setVisibility(View.VISIBLE);
+            //     getLifecycle().addObserver(new AvatarViewMixin(this, avatarView));
+            // }
+
             showSuggestionFragment();
 
             if (FeatureFlagUtils.isEnabled(this, FeatureFlags.CONTEXTUAL_HOME)) {
@@ -200,4 +210,5 @@ public class SettingsHomepageActivity extends FragmentActivity implements
         super.onResume();
         avatarView.setImageDrawable(getCircularUserIcon(getApplicationContext()));
     }
+
 }
